@@ -5,6 +5,12 @@ PyTorch 是一个针对深度学习, 并且使用 GPU 和 CPU 来优化的 tenso
 官方地址: <http://pytorch.org/>  
 中文社区: <http://pytorch.apachecn.org/>
 
+> 注意
+> 
+> 我们并没有将本项目升级到 0.4 的计划。
+> 
+> 请等待 1.0，或者访问 [PyTorch 0.4 中文文档](https://ptorch.com/docs/8/)。
+
 ## 文档地址
 
 * PyTorch 中文社区: <http://pytorch.apachecn.org/>  
