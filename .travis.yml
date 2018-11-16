@@ -2,7 +2,7 @@ language: python
 python: 3.6
 
 install:
-  - pip install -r doc/zh/requirements.txt -
+  - pip install -r doc/zh/requirements.txt -q
 
 script:
   - cd doc/zh/
