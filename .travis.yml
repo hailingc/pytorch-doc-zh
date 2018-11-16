@@ -1,0 +1,20 @@
+language: python
+python: 3.6
+
+install:
+  - pip install -r doc/zh/requirements.txt
+
+script:
+  - cd doc/zh/
+  - make html
+
+after_script:
+  - ls
+
+env:
+  global:
+    - GH_UN=jiangzhonglian
+    - GH_EMAIL=jiang-s@163.com
+    - GH_USER=apachecn
+    - GH_REPO=pytorch-doc-zh
+    - GH_BRANCH=gh-pages
