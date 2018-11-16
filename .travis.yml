@@ -3,12 +3,20 @@ python: 3.6
 
 install:
   - pip install -r doc/zh/requirements.txt -q
+  - pip install -r tutorial/zh/requirements.txt -q
 
 script:
   - cd doc/zh/
   - make html
+  - cd ../../tutorial/zh/
+  - make html
+  - cd ../../
+  - mkdir html
+  - mv -r doc/zh/build/html html/doc
+  - mv -r tutorial/zh/build/html html/tutorial
 
 after_script:
+  - cd html
   - ls
 
 env:
