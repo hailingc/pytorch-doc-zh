@@ -1,0 +1,2391 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="PyTorch 0.3.0 中文文档">
+      
+      
+        <link rel="canonical" href="http://pytorch.apachecn.org/12/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>跟着例子学习 PyTorch - PyTorch 0.3.0 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ff7043">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+        }
+    });
+    </script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38525fdac4b5d4403900b943d4e7dd91";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#pytorch" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://pytorch.apachecn.org" title="PyTorch 0.3.0 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                PyTorch 0.3.0 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                跟着例子学习 PyTorch
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/pytorch-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      pytorch-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href=".." title="主页" class="md-tabs__link">
+          主页
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0/" title="中文教程" class="md-tabs__link md-tabs__link--active">
+          中文教程
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../45/" title="中文文档" class="md-tabs__link">
+          中文文档
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://pytorch.apachecn.org" title="PyTorch 0.3.0 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    PyTorch 0.3.0 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/pytorch-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      pytorch-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      主页
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        主页
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href=".." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      中文教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        中文教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0/" title="初学者教程" class="md-nav__link">
+      初学者教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="PyTorch 深度学习: 60 分钟极速入门教程" class="md-nav__link">
+      PyTorch 深度学习: 60 分钟极速入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="PyTorch 是什么？" class="md-nav__link">
+      PyTorch 是什么？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="自动求导: 自动微分" class="md-nav__link">
+      自动求导: 自动微分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="神经网络" class="md-nav__link">
+      神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="训练一个分类器" class="md-nav__link">
+      训练一个分类器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="可选: 数据并行" class="md-nav__link">
+      可选: 数据并行
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="PyTorch for former Torch users" class="md-nav__link">
+      PyTorch for former Torch users
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Tensors" class="md-nav__link">
+      Tensors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="Autograd (自动求导)" class="md-nav__link">
+      Autograd (自动求导)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="nn package" class="md-nav__link">
+      nn package
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="Multi-GPU examples" class="md-nav__link">
+      Multi-GPU examples
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        跟着例子学习 PyTorch
+      </label>
+    
+    <a href="./" title="跟着例子学习 PyTorch" class="md-nav__link md-nav__link--active">
+      跟着例子学习 PyTorch
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tensors" title="Tensors" class="md-nav__link">
+    Tensors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warm-up-numpy" title="Warm-up: numpy" class="md-nav__link">
+    Warm-up: numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-tensors" title="PyTorch: Tensors" class="md-nav__link">
+    PyTorch: Tensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autograd" title="Autograd" class="md-nav__link">
+    Autograd
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-variables-and-autograd" title="PyTorch: Variables and autograd" class="md-nav__link">
+    PyTorch: Variables and autograd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-defining-new-autograd-functions" title="PyTorch: Defining new autograd functions" class="md-nav__link">
+    PyTorch: Defining new autograd functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorflow-static-graphs" title="TensorFlow: Static Graphs" class="md-nav__link">
+    TensorFlow: Static Graphs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citenncite-module" title="&lt;cite&gt;nn&lt;/cite&gt; module" class="md-nav__link">
+    &lt;cite&gt;nn&lt;/cite&gt; module
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-nn" title="PyTorch: nn" class="md-nav__link">
+    PyTorch: nn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-optim" title="PyTorch: optim" class="md-nav__link">
+    PyTorch: optim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-custom-nn-modules" title="PyTorch: Custom nn Modules" class="md-nav__link">
+    PyTorch: Custom nn Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-control-flow-weight-sharing" title="PyTorch: Control Flow + Weight Sharing" class="md-nav__link">
+    PyTorch: Control Flow + Weight Sharing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensors_1" title="Tensors" class="md-nav__link">
+    Tensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autograd_1" title="Autograd" class="md-nav__link">
+    Autograd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citenncite-module_1" title="&lt;cite&gt;nn&lt;/cite&gt; module" class="md-nav__link">
+    &lt;cite&gt;nn&lt;/cite&gt; module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="Warm-up: numpy" class="md-nav__link">
+      Warm-up: numpy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="PyTorch: Tensors" class="md-nav__link">
+      PyTorch: Tensors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="PyTorch: 变量和autograd" class="md-nav__link">
+      PyTorch: 变量和autograd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="PyTorch: 定义新的autograd函数" class="md-nav__link">
+      PyTorch: 定义新的autograd函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="TensorFlow: 静态图" class="md-nav__link">
+      TensorFlow: 静态图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="PyTorch: nn包" class="md-nav__link">
+      PyTorch: nn包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="PyTorch: optim包" class="md-nav__link">
+      PyTorch: optim包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="PyTorch: 定制化nn模块" class="md-nav__link">
+      PyTorch: 定制化nn模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="PyTorch: 动态控制流程 + 权重共享" class="md-nav__link">
+      PyTorch: 动态控制流程 + 权重共享
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="迁移学习教程" class="md-nav__link">
+      迁移学习教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="数据加载和处理教程" class="md-nav__link">
+      数据加载和处理教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="针对NLP的Pytorch深度学习" class="md-nav__link">
+      针对NLP的Pytorch深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="PyTorch介绍" class="md-nav__link">
+      PyTorch介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="PyTorch深度学习" class="md-nav__link">
+      PyTorch深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../27/" title="词汇嵌入:编码词汇语义" class="md-nav__link">
+      词汇嵌入:编码词汇语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../28/" title="序列模型和 LSTM 网络（长短记忆网络）" class="md-nav__link">
+      序列模型和 LSTM 网络（长短记忆网络）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../29/" title="高级教程: 作出动态决策和 Bi-LSTM CRF" class="md-nav__link">
+      高级教程: 作出动态决策和 Bi-LSTM CRF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30/" title="中级教程" class="md-nav__link">
+      中级教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../31/" title="用字符级RNN分类名称" class="md-nav__link">
+      用字符级RNN分类名称
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../32/" title="基与字符级RNN（Char-RNN）的人名生成" class="md-nav__link">
+      基与字符级RNN（Char-RNN）的人名生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../33/" title="用基于注意力机制的seq2seq神经网络进行翻译" class="md-nav__link">
+      用基于注意力机制的seq2seq神经网络进行翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../34/" title="强化学习（DQN）教程" class="md-nav__link">
+      强化学习（DQN）教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../35/" title="Writing Distributed Applications with PyTorch" class="md-nav__link">
+      Writing Distributed Applications with PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../36/" title="空间转换网络 (Spatial Transformer Networks) 教程" class="md-nav__link">
+      空间转换网络 (Spatial Transformer Networks) 教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../37/" title="高级教程" class="md-nav__link">
+      高级教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../38/" title="用 PyTorch 做 神经转换 (Neural Transfer)" class="md-nav__link">
+      用 PyTorch 做 神经转换 (Neural Transfer)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../39/" title="使用 numpy 和 scipy 创建扩展" class="md-nav__link">
+      使用 numpy 和 scipy 创建扩展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40/" title="使用 ONNX 将模型从 PyTorch 迁移到 Caffe2 和 Mobile" class="md-nav__link">
+      使用 ONNX 将模型从 PyTorch 迁移到 Caffe2 和 Mobile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41/" title="为 pytorch 自定义 C 扩展" class="md-nav__link">
+      为 pytorch 自定义 C 扩展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../42/" title="项目相关" class="md-nav__link">
+      项目相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../43/" title="项目贡献者" class="md-nav__link">
+      项目贡献者
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../44/" title="组织学习交流群" class="md-nav__link">
+      组织学习交流群
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      中文文档
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        中文文档
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../45/" title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../46/" title="自动求导机制" class="md-nav__link">
+      自动求导机制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../47/" title="广播语义" class="md-nav__link">
+      广播语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../48/" title="CUDA 语义" class="md-nav__link">
+      CUDA 语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../49/" title="扩展 PyTorch" class="md-nav__link">
+      扩展 PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../50/" title="多进程的最佳实践" class="md-nav__link">
+      多进程的最佳实践
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../51/" title="序列化语义" class="md-nav__link">
+      序列化语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../52/" title="Package 参考" class="md-nav__link">
+      Package 参考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../53/" title="torch" class="md-nav__link">
+      torch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../54/" title="torch.Tensor" class="md-nav__link">
+      torch.Tensor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../55/" title="torch.sparse" class="md-nav__link">
+      torch.sparse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../56/" title="torch.Storage" class="md-nav__link">
+      torch.Storage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../57/" title="torch.nn" class="md-nav__link">
+      torch.nn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../58/" title="torch.optim" class="md-nav__link">
+      torch.optim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../59/" title="Automatic differentiation package - torch.autograd" class="md-nav__link">
+      Automatic differentiation package - torch.autograd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../60/" title="Probability distributions - torch.distributions" class="md-nav__link">
+      Probability distributions - torch.distributions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../61/" title="Multiprocessing package - torch.multiprocessing" class="md-nav__link">
+      Multiprocessing package - torch.multiprocessing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../62/" title="Distributed communication package - torch.distributed" class="md-nav__link">
+      Distributed communication package - torch.distributed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../63/" title="Legacy package - torch.legacy" class="md-nav__link">
+      Legacy package - torch.legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../64/" title="torch.cuda" class="md-nav__link">
+      torch.cuda
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../65/" title="torch.utils.ffi" class="md-nav__link">
+      torch.utils.ffi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../66/" title="torch.utils.data" class="md-nav__link">
+      torch.utils.data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../67/" title="torch.utils.model_zoo" class="md-nav__link">
+      torch.utils.model_zoo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../68/" title="torch.onnx" class="md-nav__link">
+      torch.onnx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../69/" title="torchvision 参考" class="md-nav__link">
+      torchvision 参考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../70/" title="torchvision" class="md-nav__link">
+      torchvision
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../71/" title="torchvision.datasets" class="md-nav__link">
+      torchvision.datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../72/" title="torchvision.models" class="md-nav__link">
+      torchvision.models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../73/" title="torchvision.transforms" class="md-nav__link">
+      torchvision.transforms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../74/" title="torchvision.utils" class="md-nav__link">
+      torchvision.utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../75/" title="项目相关" class="md-nav__link">
+      项目相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../76/" title="项目贡献者" class="md-nav__link">
+      项目贡献者
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../77/" title="组织学习交流群" class="md-nav__link">
+      组织学习交流群
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tensors" title="Tensors" class="md-nav__link">
+    Tensors
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warm-up-numpy" title="Warm-up: numpy" class="md-nav__link">
+    Warm-up: numpy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-tensors" title="PyTorch: Tensors" class="md-nav__link">
+    PyTorch: Tensors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autograd" title="Autograd" class="md-nav__link">
+    Autograd
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-variables-and-autograd" title="PyTorch: Variables and autograd" class="md-nav__link">
+    PyTorch: Variables and autograd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-defining-new-autograd-functions" title="PyTorch: Defining new autograd functions" class="md-nav__link">
+    PyTorch: Defining new autograd functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tensorflow-static-graphs" title="TensorFlow: Static Graphs" class="md-nav__link">
+    TensorFlow: Static Graphs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citenncite-module" title="&lt;cite&gt;nn&lt;/cite&gt; module" class="md-nav__link">
+    &lt;cite&gt;nn&lt;/cite&gt; module
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-nn" title="PyTorch: nn" class="md-nav__link">
+    PyTorch: nn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-optim" title="PyTorch: optim" class="md-nav__link">
+    PyTorch: optim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-custom-nn-modules" title="PyTorch: Custom nn Modules" class="md-nav__link">
+    PyTorch: Custom nn Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytorch-control-flow-weight-sharing" title="PyTorch: Control Flow + Weight Sharing" class="md-nav__link">
+    PyTorch: Control Flow + Weight Sharing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" title="Examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tensors_1" title="Tensors" class="md-nav__link">
+    Tensors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autograd_1" title="Autograd" class="md-nav__link">
+    Autograd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citenncite-module_1" title="&lt;cite&gt;nn&lt;/cite&gt; module" class="md-nav__link">
+    &lt;cite&gt;nn&lt;/cite&gt; module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/pytorch-doc-zh/edit/master/docs/12.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="pytorch">跟着例子学习 PyTorch</h1>
+<p><strong>Author</strong>: <a href="https://github.com/jcjohnson/pytorch-examples">Justin Johnson</a></p>
+<p>这个教程通过一些单独的示例介绍了 <a href="https://github.com/pytorch/pytorch">PyTorch</a> 的基本概念.</p>
+<p>PyTorch 的核心部分提供了两个主要功能:</p>
+<ul>
+<li>一个类似于 numpy 的n维张量, 但可以在 GPU 上运行</li>
+<li>为建立和训练神经网络自动微分</li>
+</ul>
+<p>我们将使用全连接的 ReLU 网络作为我们的运行示例. 该网络将有一个隐藏层, 并将使用梯度下降训练去最小化随机数字的预测输出和真实输出之间的欧式距离.</p>
+<p>Note</p>
+<p>你可以下载这些单独的例子在页面的底端 &lt;examples-download&gt;.</p>
+<p>本章内容目录</p>
+<ul>
+<li><a href="#tensors">Tensors</a><ul>
+<li><a href="#warm-up-numpy">Warm-up: numpy</a></li>
+<li><a href="#pytorch-tensors">PyTorch: Tensors</a></li>
+</ul>
+</li>
+<li><a href="#autograd">Autograd</a><ul>
+<li><a href="#pytorch-variables-and-autograd">PyTorch: Variables and autograd</a></li>
+<li><a href="#pytorch-defining-new-autograd-functions">PyTorch: Defining new autograd functions</a></li>
+<li><a href="#tensorflow-static-graphs">TensorFlow: Static Graphs</a></li>
+</ul>
+</li>
+<li><a href="#nn-module">&lt;cite&gt;nn&lt;/cite&gt; module</a><ul>
+<li><a href="#pytorch-nn">PyTorch: nn</a></li>
+<li><a href="#pytorch-optim">PyTorch: optim</a></li>
+<li><a href="#pytorch-custom-nn-modules">PyTorch: Custom nn Modules</a></li>
+<li><a href="#pytorch-control-flow-weight-sharing">PyTorch: Control Flow + Weight Sharing</a></li>
+</ul>
+</li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#id2">Tensors</a></li>
+<li><a href="#id3">Autograd</a></li>
+<li><a href="#id4">&lt;cite&gt;nn&lt;/cite&gt; module</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="tensors"><a href="#id14">Tensors</a></h2>
+<h3 id="warm-up-numpy"><a href="#id15">Warm-up: numpy</a></h3>
+<p>在介绍 PyTorch 之前, 我们先使用 numpy 实现网络.</p>
+<p>Numpy 提供了一个n维的数组对象, 并提供了许多操纵这个数组对象的函数. Numpy 是科学计算的通用框架; Numpy 数组没有计算图, 也没有深度学习, 也没有梯度下降等方法实现的接口. 但是我们仍然可以很容易地使用 numpy 生成随机数据 并将产生的数据传入双层的神经网络, 并使用 numpy 来实现这个网络的正向传播和反向传播:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+
+import numpy as np
+
+# N 是一个batch的样本数量; D_in是输入维度;
+# H 是隐藏层向量的维度; D_out是输出维度.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机的输入输出数据
+x = np.random.randn(N, D_in)
+y = np.random.randn(N, D_out)
+
+# 随机初始化权重参数
+w1 = np.random.randn(D_in, H)
+w2 = np.random.randn(H, D_out)
+
+learning_rate = 1e-6
+for t in range(500):    
+    # 前向计算, 算出y的预测值
+    h = x.dot(w1)
+    h_relu = np.maximum(h, 0)
+    y_pred = h_relu.dot(w2)
+
+    # 计算并打印误差值
+    loss = np.square(y_pred - y).sum()
+    print(t, loss)
+
+    # 在反向传播中, 计算出误差关于w1和w2的导数
+    grad_y_pred = 2.0 * (y_pred - y)
+    grad_w2 = h_relu.T.dot(grad_y_pred)
+    grad_h_relu = grad_y_pred.dot(w2.T)
+    grad_h = grad_h_relu.copy()
+    grad_h[h &lt; 0] = 0
+    grad_w1 = x.T.dot(grad_h)
+
+    # 更新权重
+    w1 -= learning_rate * grad_w1
+    w2 -= learning_rate * grad_w2</code></pre>
+
+
+<h3 id="pytorch-tensors"><a href="#id16">PyTorch: Tensors</a></h3>
+<p>Numpy 是一个伟大的框架, 但它不能利用 GPU 加速它数值计算. 对于现代的深度神经网络, GPU 往往是提供 <a href="https://github.com/jcjohnson/cnn-benchmarks">50倍或更大的加速</a>, 所以不幸的是, numpy 不足以满足现在深度学习的需求.</p>
+<p>这里我们介绍一下最基本的 PyTorch 概念: <strong>Tensor</strong> . PyTorch Tensor 在概念上与 numpy 数组相同: Tensor 是一个n维数组, PyTorch 也提供了很多能在这些 Tensor 上操作的函数. 像 numpy 数组一样, PyTorch Tensor 也和numpy的数组对象一样不了解深度学习,计算图和梯度下降；它们只是科学计算的通用工具.</p>
+<p>然而不像 numpy, PyTorch Tensor 可以利用 GPU 加速他们的数字计算. 要在 GPU 上运行 PyTorch 张量, 只需将其转换为新的数据类型.</p>
+<p>在这里, 我们将 PyTorch Tensor 生成的随机数据传入双层的神经网络. 就像上面的 numpy 例子一样, 我们需要手动实现网络的正向传播和反向传播:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+
+import torch
+
+dtype = torch.FloatTensor
+# dtype = torch.cuda.FloatTensor # 取消注释以在GPU上运行
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机输入和输出数据
+x = torch.randn(N, D_in).type(dtype)
+y = torch.randn(N, D_out).type(dtype)
+
+# 随机初始化权重
+w1 = torch.randn(D_in, H).type(dtype)
+w2 = torch.randn(H, D_out).type(dtype)
+
+learning_rate = 1e-6
+for t in range(500):
+    # 正向传递：计算预测y
+    h = x.mm(w1)
+    h_relu = h.clamp(min=0)
+    y_pred = h_relu.mm(w2)
+
+    # 计算并打印loss
+    loss = (y_pred - y).pow(2).sum()
+    print(t, loss)
+
+    # 反向传播计算关于损失的w1和w2的梯度
+    grad_y_pred = 2.0 * (y_pred - y)
+    grad_w2 = h_relu.t().mm(grad_y_pred)
+    grad_h_relu = grad_y_pred.mm(w2.t())
+    grad_h = grad_h_relu.clone()
+    grad_h[h &lt; 0] = 0
+    grad_w1 = x.t().mm(grad_h)
+
+    # 使用梯度下降更新权重
+    w1 -= learning_rate * grad_w1
+    w2 -= learning_rate * grad_w2</code></pre>
+
+
+<h2 id="autograd"><a href="#id17">Autograd</a></h2>
+<h3 id="pytorch-variables-and-autograd"><a href="#id18">PyTorch: Variables and autograd</a></h3>
+<p>在上面的例子中, 我们不得不手写实现神经网络的正反向传播的代码. 而手写实现反向传播的代码对于一个 小型的双层网络来说是没什么大问题的, 但是在面对大型复杂网络手写方向传播代码就会变得很棘手.</p>
+<p>谢天谢地, 我们可以使用 <a href="https://en.wikipedia.org/wiki/Automatic_differentiation">自动微分</a> 来自动化的计算神经网络中的后向传播. PyTorch 中的 <strong>autograd</strong> 包提供自动微分了这个功能. 使用 autograd 时, 网络的正向传播将定义一个 <strong>计算图</strong> ; Tensor 将会成为图中的节点,从输入 Tensor 产生输出 Tensor 的函数将会用图中的( Edge )依赖边表示. 通过计算图来反向传播可以让您轻松计算梯度.</p>
+<p>这听起来很复杂, 但是在实践中使用起来相当简单. 我们将 PyTorch 的 Tensor 包装成在 <strong>Variable</strong> 对象； 一个 Variable 代表一个计算图中的节点. 如果 <code>x</code> 是一个 Variable , 则 <code>x.data</code> 是一个 Tensor , 而 <code>x.grad</code> 是另外一个包含关于 <code>x</code> 的梯度的 Variable .</p>
+<p>PyTorch Variable 与 PyTorch Tensor 具有相同的 API: (几乎) 任何您可以在 Tensor 上执行的 操作也适用于 Variable ；该区别在于如果你使用 Variable 定义了一个计算图, Pytorch 允许您自动计算梯度.</p>
+<p>这里我们使用 PyTorch 的 Variable 和自动微分来实现我们的双层网络；现在我们不再需要手写任何关于 计算网络反向传播的代码:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import torch
+from torch.autograd import Variable
+
+dtype = torch.FloatTensor
+# dtype = torch.cuda.FloatTensor # 取消注释以在GPU上运行
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中.
+# 设置requires_grad = False, 因为在后向传播时, 我们并不需要计算关于这些变量的梯度
+x = Variable(torch.randn(N, D_in).type(dtype), requires_grad=False)
+y = Variable(torch.randn(N, D_out).type(dtype), requires_grad=False)
+
+# 为权重创建随机张量,并将其包装在变量中.
+# 设置requires_grad = True, 因为在后向传播时, 我们需要计算关于这些变量的梯度
+w1 = Variable(torch.randn(D_in, H).type(dtype), requires_grad=True)
+w2 = Variable(torch.randn(H, D_out).type(dtype), requires_grad=True)
+
+learning_rate = 1e-6
+for t in range(500):
+    # 正向传递:使用变量上的运算来计算预测的y; 这些
+    # 与我们用于计算使用张量的正向传递完全相同,
+    # 但我们不需要保留对中间值的引用,
+    # 因为我们没有实现向后传递.
+    y_pred = x.mm(w1).clamp(min=0).mm(w2)
+
+    # 使用变量上的操作计算和打印损失.
+    # 现在损失是形状变量 (1,) 并且 loss.data 是形状的张量
+    # (1,); loss.data[0] 是持有损失的标量值.
+    loss = (y_pred - y).pow(2).sum()
+    print(t, loss.data[0])
+
+    # 使用autograd来计算反向传递. 
+    # 该调用将使用requires_grad = True来计算相对于所有变量的损失梯度.
+    # 在这次调用之后 w1.grad 和 w2.grad 将是变量
+    # 它们分别相对于w1和w2保存损失的梯度.
+    loss.backward()
+
+    # 使用梯度下降更新权重; w1.data 和 w2.data 是张量,
+    # w1.grad 和 w2.grad 是变量并且 w1.grad.data 和 w2.grad.data 
+    # 是张量.
+    w1.data -= learning_rate * w1.grad.data
+    w2.data -= learning_rate * w2.grad.data
+
+    # 更新权重后手动将梯度归零
+    w1.grad.data.zero_()
+    w2.grad.data.zero_()</code></pre>
+
+
+<h3 id="pytorch-defining-new-autograd-functions"><a href="#id19">PyTorch: Defining new autograd functions</a></h3>
+<p>在这层覆盖下, 每个原始的 autograd 操作符实际上是两个函数在张量上运行. <strong>前向传播</strong> 函数从输入的 Tensor 计算将要输出的 Tensor . <strong>后向传播</strong> 函数接收上一个 Tensor 关于 scalar 的梯度, 以 及计算当前输入 Tensor 对相同 scalar 值的梯度.</p>
+<p>在 PyTorch 中, 我们可以通过定义一个 <code>torch.autograd.Function</code> 的子类和 实现 <code>前向传播</code> 和 <code>后向传播</code> 函数来轻松定义自己的 autograd 操作符. 然后我们可以 使用我们新的 autograd 操作符构造一个实例并将其作为一个函数调用, 传递用 Variable 包装了的输入数据的.</p>
+<p>在这个例子中我们定义了我们自己的 autograd 函数来执行 ReLU 非线性函数, 并用它来实现我们的双层网络:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import torch
+from torch.autograd import Variable
+
+class MyReLU(torch.autograd.Function):
+    &quot;&quot;&quot;
+ 我们可以通过子类实现我们自己定制的autograd函数
+ torch.autograd.Function和执行在Tensors上运行的向前和向后通行证.
+ &quot;&quot;&quot;
+
+    @staticmethod
+    def forward(ctx, input):
+        &quot;&quot;&quot;
+ 在正向传递中,我们收到一个包含输入和返回张量的张量,其中包含输出.
+ ctx是一个上下文对象,可用于存储反向计算的信息.
+ 您可以使用ctx.save_for_backward方法缓存任意对象以用于后向传递.
+ &quot;&quot;&quot;
+        ctx.save_for_backward(input)
+        return input.clamp(min=0)
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        &quot;&quot;&quot;
+ 在后向传递中,我们收到一个张量,其中包含相对于输出的损失梯度,
+ 我们需要计算相对于输入的损失梯度.
+ &quot;&quot;&quot;
+        input, = ctx.saved_tensors
+        grad_input = grad_output.clone()
+        grad_input[input &lt; 0] = 0
+        return grad_input
+
+dtype = torch.FloatTensor
+# dtype = torch.cuda.FloatTensor # 取消注释以在GPU上运行
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中.
+x = Variable(torch.randn(N, D_in).type(dtype), requires_grad=False)
+y = Variable(torch.randn(N, D_out).type(dtype), requires_grad=False)
+
+# 为权重创建随机张量,并将其包装在变量中.
+w1 = Variable(torch.randn(D_in, H).type(dtype), requires_grad=True)
+w2 = Variable(torch.randn(H, D_out).type(dtype), requires_grad=True)
+
+learning_rate = 1e-6
+for t in range(500):
+    # 为了应用我们的函数,我们使用Function.apply方法.我们把它称为'relu'.
+    relu = MyReLU.apply
+
+    # 正向传递:使用变量上的运算来计算预测的y; 
+    # 我们使用我们的自定义autograd操作来计算ReLU.
+    y_pred = relu(x.mm(w1)).mm(w2)
+
+    # 计算和打印损失
+    loss = (y_pred - y).pow(2).sum()
+    print(t, loss.data[0])
+
+    # 使用autograd来计算反向传递.
+    loss.backward()
+
+    # 使用梯度下降更新权重
+    w1.data -= learning_rate * w1.grad.data
+    w2.data -= learning_rate * w2.grad.data
+
+    # 更新权重后手动将梯度归零
+    w1.grad.data.zero_()
+    w2.grad.data.zero_()</code></pre>
+
+
+<h3 id="tensorflow-static-graphs"><a href="#id20">TensorFlow: Static Graphs</a></h3>
+<p>Pytorch 的 autograd 看上去有点像 TensorFlow .两个框架的共同点是他们都是定义了自己的计算图. 和使用自动求微分的方法来计算梯度. 两者之间最大的不同在于 TensorFlow 的计算图是 <strong>静态的</strong> 和 PyTorch 的计算图是 <strong>动态的</strong> .</p>
+<p>在 TensorFlow 中, 我们只定义了一次计算图,然后重复执行同一张计算图, 只是输入计算图的数据不同而已. 而在 PyTorch 中, 每个正向传播都会定义一个新的计算图.</p>
+<p>静态图很好, 因为您可以预先优化计算图；例如一个框架可能会为了计算效率决定融合一些计算图操作(像:Fused Graph), 或提出 一个多卡或者多机的分布式计算图的策略. 如果您正在重复使用相同的计算图, 那么这个潜在的 昂贵的前期优化可以使用静态图来得以减轻.</p>
+<p>一方面来说, 静态图和动态图的控制流是不同的. 对于有些模型我们可能希望对每个数据点执行不同 的计算；例如循环神经网络可能会被展开为对每个数据的不同的长度的时间步数；这个展开可以用循 环来实现. 循环结构的静态图需要成为计算图的一部分；为此 TensorFlow 提供 <code>tf.scan</code> 操作符 用于将重复的结构嵌入到计算图中. 而动态计算图的情况比较简单: 因为我们设计的计算图可以对每个不同长度的输入随机应变. 我们可以使用正常的命令式代码对每个不同长度的输入执行计算.</p>
+<p>为了与上面的 PyTorch autograd 例子进行对比, 我们在这里也使用 TensorFlow 创建简单的两层神经网络:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+
+import tensorflow as tf
+import numpy as np
+
+# 首先我们设置计算图:
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 为输入数据和目标数据创建占位符; 
+# 当我们执行图时,这些将被填充真实的数据.
+x = tf.placeholder(tf.float32, shape=(None, D_in))
+y = tf.placeholder(tf.float32, shape=(None, D_out))
+
+# 为权重创建变量并用随机数据初始化它们.
+# 一个TensorFlow变量在图的执行中保持其值.
+w1 = tf.Variable(tf.random_normal((D_in, H)))
+w2 = tf.Variable(tf.random_normal((H, D_out)))
+
+# 正向传递:使用TensorFlow Tensors上的运算来计算预测的y.
+# 请注意此代码实际上并未执行任何数字操作;
+# 它只是设置我们稍后将执行的计算图.
+h = tf.matmul(x, w1)
+h_relu = tf.maximum(h, tf.zeros(1))
+y_pred = tf.matmul(h_relu, w2)
+
+# 使用TensorFlow张量上的操作计算损失
+loss = tf.reduce_sum((y - y_pred) ** 2.0)
+
+# 计算相对于w1和w2的损失梯度.
+grad_w1, grad_w2 = tf.gradients(loss, [w1, w2])
+
+# 使用梯度下降更新权重.
+# 要实际更新权重,我们需要在执行图时评估new_w1和new_w2.
+# 请注意,在TensorFlow中,更新权值的行为是计算图的一部分
+# 在PyTorch中,这发生在计算图之外.
+learning_rate = 1e-6
+new_w1 = w1.assign(w1 - learning_rate * grad_w1)
+new_w2 = w2.assign(w2 - learning_rate * grad_w2)
+
+# 现在我们已经构建了计算图,所以我们输入一个TensorFlow会话来实际执行图.
+with tf.Session() as sess:
+    # 运行一次图形初始化变量w1和w2.
+    sess.run(tf.global_variables_initializer())
+
+    # 创建包含输入x和目标y的实际数据的numpy数组
+    x_value = np.random.randn(N, D_in)
+    y_value = np.random.randn(N, D_out)
+    for _ in range(500):
+        # 多次执行图. 每次执行时,
+        # 我们都想将x_value绑定到x,将y_value绑定到y,用feed_dict参数指定.
+        # 每次我们执行图时,我们都想计算损失值new_w1 和 new_w2; 
+        # 这些张量的值作为numpy数组返回.
+        loss_value, _, _ = sess.run([loss, new_w1, new_w2],
+                                    feed_dict={x: x_value, y: y_value})
+        print(loss_value)</code></pre>
+
+
+<h2 id="citenncite-module"><a href="#id21">&lt;cite&gt;nn&lt;/cite&gt; module</a></h2>
+<h3 id="pytorch-nn"><a href="#id22">PyTorch: nn</a></h3>
+<p>计算图( Computational graphs )和 autograd 是一个非常强大的定义复杂的运算符并自动地导出的范式；然而对于 大型的神经网络, 原始的 autograd 仍然显得有点太低级.</p>
+<p>当我们创建神经网络时, 我们经常思考如何设计安排 <strong> layer </strong> , 以及一些在训练过程中网络会学习到的 <strong> learnable parameters </strong></p>
+<p>在TensorFlow中, 像 <a href="https://github.com/fchollet/keras">Keras</a>, <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">TensorFlow-Slim</a>, 和 <a href="http://tflearn.org/">TFLearn</a> 通过构建对神经网络有用的原始计算图提供更高层次的抽象.</p>
+<p>在 PyTorch 中, <code>nn</code> 包起了同样的作用. <code>nn</code> 包定义了一组 <strong> Modules </strong> , 大致相当于神经网络层. 模块接收输入变量并进行计算输出变量, 但也可以保持内部状态, 如 用 Variable 包装的 learnable parameters . <code>nn</code> 包 也定义了一系列在训练神经网络时比较常用的损失函数.</p>
+<p>在这个例子中, 我们使用 <code>nn</code> 包来实现我们的双层神经网络:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import torch
+from torch.autograd import Variable
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中.
+x = Variable(torch.randn(N, D_in))
+y = Variable(torch.randn(N, D_out), requires_grad=False)
+
+# 使用nn包将我们的模型定义为一系列图层. 
+# nn.Sequential是一个包含其他模块的模块,并将它们按顺序应用以产生其输出.
+# 每个线性模块使用线性函数计算来自输入的输出,并保存内部变量的权重和偏差.
+model = torch.nn.Sequential(
+    torch.nn.Linear(D_in, H),
+    torch.nn.ReLU(),
+    torch.nn.Linear(H, D_out),
+)
+
+# nn包还包含流行损失函数的定义; 
+# 在这种情况下,我们将使用均方差(MSE)作为我们的损失函数.
+loss_fn = torch.nn.MSELoss(size_average=False)
+
+learning_rate = 1e-4
+for t in range(500):
+    # 正向传递:通过将x传递给模型来计算预测的y.
+    # 模块对象会覆盖__call__运算符,因此您可以将它们称为函数.
+    # 这样做时,您将输入数据的变量传递给模块,并生成输出数据的变量.
+    y_pred = model(x)
+
+    # 计算和打印损失.
+    # 我们传递包含y的预测值和真值的变量,并且损失函数返回包含损失的变量.
+    loss = loss_fn(y_pred, y)
+    print(t, loss.data[0])
+
+    # 在运行反向传递之前将梯度归零.
+    model.zero_grad()
+
+    # 向后传递:计算相对于模型的所有可学习参数的损失梯度.
+    # 在内部,每个模块的参数都存储在变量require_grad = True中,
+    # 因此该调用将计算模型中所有可学习参数的梯度.
+    loss.backward()
+
+    # 使用梯度下降更新权重.
+    # 每个参数都是一个变量,所以我们可以像我们以前那样访问它的数据和梯度.
+    for param in model.parameters():
+        param.data -= learning_rate * param.grad.data</code></pre>
+
+
+<h3 id="pytorch-optim"><a href="#id23">PyTorch: optim</a></h3>
+<p>到目前为止, 我们一直通过手动更新的方法更新模型的可学习参数( learnable parameters )的权重 <code>.data</code> 这对于简单的优化算法像随机梯度下降来还算轻松, 但是在实际中我们经常使用更巧妙的 优化器来训练神经网络, 如 AdaGrad, RMSProp, Adam 等.</p>
+<p>PyTorch 中的 <code>optim</code> 包包含了一些优化器的算法, 并提供了一些常用优化器的使用.</p>
+<p>在这个例子中, 虽然我们将像之前一样使用 <code>nn</code> 包来定义我们的模型, 但是我们这次将使用由 <code>optim</code> 包提供的Adam算法来更新模型:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import torch
+from torch.autograd import Variable
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中.
+x = Variable(torch.randn(N, D_in))
+y = Variable(torch.randn(N, D_out), requires_grad=False)
+
+# 使用nn包来定义我们的模型和损失函数.
+model = torch.nn.Sequential(
+    torch.nn.Linear(D_in, H),
+    torch.nn.ReLU(),
+    torch.nn.Linear(H, D_out),
+)
+loss_fn = torch.nn.MSELoss(size_average=False)
+
+# 使用优化包来定义一个优化器,它将为我们更新模型的权重.
+# 在这里,我们将使用 Adam;这个 optim 包包含许多其他优化算法.
+# Adam构造函数的第一个参数告诉优化器应该更新哪个Variables.
+learning_rate = 1e-4
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+for t in range(500):
+    # 正向传递:通过将x传递给模型来计算预测的y.
+    y_pred = model(x)
+
+    # 计算和打印损失函数.
+    loss = loss_fn(y_pred, y)
+    print(t, loss.data[0])
+
+    # 在向后传递之前,使用优化器对象为其要更新的变量（这是模型的可学习权重）的所有梯度归零.
+    # 这是因为默认情况下,只要调用.backward(),梯度就会在缓冲区中累积(即不会被覆盖).
+    # 查看torch.autograd.backward的文档以获取更多详细信息.
+    optimizer.zero_grad()
+
+    # 向后传递:计算损失函数相对于模型参数的梯度
+    loss.backward()
+
+    # 在优化器上调用step函数会更新其参数
+    optimizer.step()</code></pre>
+
+
+<h3 id="pytorch-custom-nn-modules"><a href="#id24">PyTorch: Custom nn Modules</a></h3>
+<p>有时你会想要使用比现有模块组合更复杂的特殊模型；对于这些情况, 你可以 通过继承 <code>nn.Module</code> 来定义你自己的模块, 并定义一个 <code>forward</code> 来实现模块接收输入 Variable 并使用其他模块输出的 Variable 和 其他 autograd 操作.</p>
+<p>在这个例子中, 我们使用了我们之前已经实现的双层网络来作为一个自定义的模块子类:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import torch
+from torch.autograd import Variable
+
+class TwoLayerNet(torch.nn.Module):
+    def __init__(self, D_in, H, D_out):
+        &quot;&quot;&quot;
+ 在构造函数中,我们实例化两个nn.Linear模块并将它们分配为成员变量.
+ &quot;&quot;&quot;
+        super(TwoLayerNet, self).__init__()
+        self.linear1 = torch.nn.Linear(D_in, H)
+        self.linear2 = torch.nn.Linear(H, D_out)
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+ 在forward函数中,我们接受一个变量的输入数据,我们必须返回一个变量的输出数据.
+ 我们可以使用构造函数中定义的模块以及变量上的任意运算符.
+ &quot;&quot;&quot;
+        h_relu = self.linear1(x).clamp(min=0)
+        y_pred = self.linear2(h_relu)
+        return y_pred
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中. 
+x = Variable(torch.randn(N, D_in))
+y = Variable(torch.randn(N, D_out), requires_grad=False)
+
+# 通过实例化上面定义的类来构建我们的模型
+model = TwoLayerNet(D_in, H, D_out)
+
+# 构建我们的损失函数和优化器. 
+# 对SGD构造函数中的model.parameters()的调用将包含作为模型成员的两个nn.Linear模块的可学习参数.
+criterion = torch.nn.MSELoss(size_average=False)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-4)
+for t in range(500):
+    # 正向传递：通过将x传递给模型来计算预测的y
+    y_pred = model(x)
+
+    # 计算和打印损失
+    loss = criterion(y_pred, y)
+    print(t, loss.data[0])
+
+    # 梯度置零, 执行反向传递并更新权重.
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+
+
+<h3 id="pytorch-control-flow-weight-sharing"><a href="#id25">PyTorch: Control Flow + Weight Sharing</a></h3>
+<p>作为一个动态图和权值共享的例子, 我们实现一个奇葩的模型: 随机1-4次重复搭建同个正向传播的全连接 的 ReLU 网络, 并且多个隐藏层使用相同的权重来计算最内层隐藏层(译者注: 这里的相同权重,是指随机1-4次重复搭建的这个middle_linear).</p>
+<p>对于这个模型, 我们可以使用普通的 Python 流程控制语句来实现循环, 而且我们可以在定义前向传 播时通过简单地重复使用相同的模块实现 middle_linear 层的权重共享.</p>
+<p>我们可以很容易地将这个模型作为 Module 子类来实现:</p>
+<pre class="codehilite"><code class="language-py"># -*- coding: utf-8 -*-
+import random
+import torch
+from torch.autograd import Variable
+
+class DynamicNet(torch.nn.Module):
+    def __init__(self, D_in, H, D_out):
+        &quot;&quot;&quot;
+ 在构造函数中,我们构造了三个nn.Linear实例,我们将在正向传递中使用它们.
+ &quot;&quot;&quot;
+        super(DynamicNet, self).__init__()
+        self.input_linear = torch.nn.Linear(D_in, H)
+        self.middle_linear = torch.nn.Linear(H, H)
+        self.output_linear = torch.nn.Linear(H, D_out)
+
+    def forward(self, x):
+        &quot;&quot;&quot;
+ 对于模型的正向通道,我们随机选择0,1,2或3,
+ 并重复使用多次计算隐藏层表示的middle_linear模块.
+
+ 由于每个正向通道都会生成一个动态计算图,因此在定义模型的正向通道时,
+ 我们可以使用普通的Python控制流操作符(如循环或条件语句).
+
+ 在这里我们也看到,定义计算图时多次重复使用相同模块是完全安全的.
+ 这是Lua Torch的一大改进,每个模块只能使用一次.
+ &quot;&quot;&quot;
+        h_relu = self.input_linear(x).clamp(min=0)
+        for _ in range(random.randint(0, 3)):
+            h_relu = self.middle_linear(h_relu).clamp(min=0)
+        y_pred = self.output_linear(h_relu)
+        return y_pred
+
+# N 批量大小; D_in是输入尺寸;
+# H是隐藏尺寸; D_out是输出尺寸.
+N, D_in, H, D_out = 64, 1000, 100, 10
+
+# 创建随机张量来保存输入和输出,并将它们包装在变量中.
+x = Variable(torch.randn(N, D_in))
+y = Variable(torch.randn(N, D_out), requires_grad=False)
+
+# 通过实例化上面定义的类来构建我们的模型
+model = DynamicNet(D_in, H, D_out)
+
+# 构建我们的损失函数和优化器.
+# 用随机梯度下降训练这个奇怪的模型非常困难,所以我们使用动量
+criterion = torch.nn.MSELoss(size_average=False)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
+for t in range(500):
+    # 正向传递:通过将x传递给模型来计算预测的y
+    y_pred = model(x)
+
+    # 计算和打印损失
+    loss = criterion(y_pred, y)
+    print(t, loss.data[0])
+
+    # 零梯度执行反向传递并更新权重.
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()</code></pre>
+
+
+<h2 id="examples"><a href="#id26">Examples</a></h2>
+<p>你可以在这里浏览上网提到的例子</p>
+<h3 id="tensors_1"><a href="#id27">Tensors</a></h3>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_numpy_thumb.png" src="../img/fde5e398e4c2beb25656f2673648db70.jpg" /></p>
+<p><a href="examples_tensor/two_layer_net_numpy.html#sphx-glr-beginner-examples-tensor-two-layer-net-numpy-py">Warm-up: numpy</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_tensor_thumb.png" src="../img/cefe9c3fe738e3709b99e1d05416bf88.jpg" /></p>
+<p><a href="examples_tensor/two_layer_net_tensor.html#sphx-glr-beginner-examples-tensor-two-layer-net-tensor-py">PyTorch: Tensors</a></p>
+<h3 id="autograd_1"><a href="#id28">Autograd</a></h3>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_autograd_thumb.png" src="../img/4cbc01edb4f350d5b1b3d2049b607cd6.jpg" /></p>
+<p><a href="examples_autograd/two_layer_net_autograd.html#sphx-glr-beginner-examples-autograd-two-layer-net-autograd-py">PyTorch: 变量和autograd</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_custom_function_thumb.png" src="../img/541910b14ff1f4153ca61f6bead64788.jpg" /></p>
+<p><a href="examples_autograd/two_layer_net_custom_function.html#sphx-glr-beginner-examples-autograd-two-layer-net-custom-function-py">PyTorch: 定义新的autograd函数</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_tf_two_layer_net_thumb.png" src="../img/6c5584ac69092a9a5d8b79d60cd52320.jpg" /></p>
+<p><a href="examples_autograd/tf_two_layer_net.html#sphx-glr-beginner-examples-autograd-tf-two-layer-net-py">TensorFlow: 静态图</a></p>
+<h3 id="citenncite-module_1"><a href="#id29">&lt;cite&gt;nn&lt;/cite&gt; module</a></h3>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_nn_thumb.png" src="../img/4b23d725d5ca881ded3fd853fe416d66.jpg" /></p>
+<p><a href="examples_nn/two_layer_net_nn.html#sphx-glr-beginner-examples-nn-two-layer-net-nn-py">PyTorch: nn包</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_optim_thumb.png" src="../img/95230f139f305fc72f0c5321e8844175.jpg" /></p>
+<p><a href="examples_nn/two_layer_net_optim.html#sphx-glr-beginner-examples-nn-two-layer-net-optim-py">PyTorch: optim包</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_two_layer_net_module_thumb.png" src="../img/00f663f4443821b9457c604a995d98eb.jpg" /></p>
+<p><a href="examples_nn/two_layer_net_module.html#sphx-glr-beginner-examples-nn-two-layer-net-module-py">PyTorch: 定制化nn模块</a></p>
+<p><img alt="http://pytorch.apachecn.org/cn/tutorials/_images/sphx_glr_dynamic_net_thumb.png" src="../img/bf2f95743c71cbfeb80236e82fb828fc.jpg" /></p>
+<p><a href="examples_nn/dynamic_net.html#sphx-glr-beginner-examples-nn-dynamic-net-py">PyTorch: 动态控制流程 + 权重共享</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/pytorch-doc-zh/" target="_blank">apachecn/pytorch-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'pytorch-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../11/" title="Multi-GPU examples" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Multi-GPU examples
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../13/" title="Warm-up: numpy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Warm-up: numpy
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

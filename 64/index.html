@@ -1,0 +1,2107 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="PyTorch 0.3.0 中文文档">
+      
+      
+        <link rel="canonical" href="http://pytorch.apachecn.org/64/">
+      
+      
+        <meta name="author" content="ApacheCN Team">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>torch.cuda - PyTorch 0.3.0 中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#ff7043">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+        }
+    });
+    </script>
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38525fdac4b5d4403900b943d4e7dd91";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+    <!-- google webmaster -->
+    <meta name="google-site-verification" content="pyo9N70ZWyh8JB43bIu633mhxesJ1IcwWCZlM3jUfFo" />
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#torchcuda" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://pytorch.apachecn.org" title="PyTorch 0.3.0 中文文档" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                PyTorch 0.3.0 中文文档
+              </span>
+              <span class="md-header-nav__topic">
+                torch.cuda
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/apachecn/pytorch-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      pytorch-doc-zh
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href=".." title="主页" class="md-tabs__link">
+          主页
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../0/" title="中文教程" class="md-tabs__link">
+          中文教程
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../45/" title="中文文档" class="md-tabs__link md-tabs__link--active">
+          中文文档
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://pytorch.apachecn.org" title="PyTorch 0.3.0 中文文档" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    PyTorch 0.3.0 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/apachecn/pytorch-doc-zh/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      pytorch-doc-zh
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      主页
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        主页
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href=".." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      中文教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        中文教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../0/" title="初学者教程" class="md-nav__link">
+      初学者教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1/" title="PyTorch 深度学习: 60 分钟极速入门教程" class="md-nav__link">
+      PyTorch 深度学习: 60 分钟极速入门教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2/" title="PyTorch 是什么？" class="md-nav__link">
+      PyTorch 是什么？
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3/" title="自动求导: 自动微分" class="md-nav__link">
+      自动求导: 自动微分
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4/" title="神经网络" class="md-nav__link">
+      神经网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5/" title="训练一个分类器" class="md-nav__link">
+      训练一个分类器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../6/" title="可选: 数据并行" class="md-nav__link">
+      可选: 数据并行
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../7/" title="PyTorch for former Torch users" class="md-nav__link">
+      PyTorch for former Torch users
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../8/" title="Tensors" class="md-nav__link">
+      Tensors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../9/" title="Autograd (自动求导)" class="md-nav__link">
+      Autograd (自动求导)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../10/" title="nn package" class="md-nav__link">
+      nn package
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11/" title="Multi-GPU examples" class="md-nav__link">
+      Multi-GPU examples
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../12/" title="跟着例子学习 PyTorch" class="md-nav__link">
+      跟着例子学习 PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../13/" title="Warm-up: numpy" class="md-nav__link">
+      Warm-up: numpy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../14/" title="PyTorch: Tensors" class="md-nav__link">
+      PyTorch: Tensors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../15/" title="PyTorch: 变量和autograd" class="md-nav__link">
+      PyTorch: 变量和autograd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../16/" title="PyTorch: 定义新的autograd函数" class="md-nav__link">
+      PyTorch: 定义新的autograd函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../17/" title="TensorFlow: 静态图" class="md-nav__link">
+      TensorFlow: 静态图
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../18/" title="PyTorch: nn包" class="md-nav__link">
+      PyTorch: nn包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../19/" title="PyTorch: optim包" class="md-nav__link">
+      PyTorch: optim包
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../20/" title="PyTorch: 定制化nn模块" class="md-nav__link">
+      PyTorch: 定制化nn模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../21/" title="PyTorch: 动态控制流程 + 权重共享" class="md-nav__link">
+      PyTorch: 动态控制流程 + 权重共享
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../22/" title="迁移学习教程" class="md-nav__link">
+      迁移学习教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../23/" title="数据加载和处理教程" class="md-nav__link">
+      数据加载和处理教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../24/" title="针对NLP的Pytorch深度学习" class="md-nav__link">
+      针对NLP的Pytorch深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../25/" title="PyTorch介绍" class="md-nav__link">
+      PyTorch介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../26/" title="PyTorch深度学习" class="md-nav__link">
+      PyTorch深度学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../27/" title="词汇嵌入:编码词汇语义" class="md-nav__link">
+      词汇嵌入:编码词汇语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../28/" title="序列模型和 LSTM 网络（长短记忆网络）" class="md-nav__link">
+      序列模型和 LSTM 网络（长短记忆网络）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../29/" title="高级教程: 作出动态决策和 Bi-LSTM CRF" class="md-nav__link">
+      高级教程: 作出动态决策和 Bi-LSTM CRF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../30/" title="中级教程" class="md-nav__link">
+      中级教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../31/" title="用字符级RNN分类名称" class="md-nav__link">
+      用字符级RNN分类名称
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../32/" title="基与字符级RNN（Char-RNN）的人名生成" class="md-nav__link">
+      基与字符级RNN（Char-RNN）的人名生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../33/" title="用基于注意力机制的seq2seq神经网络进行翻译" class="md-nav__link">
+      用基于注意力机制的seq2seq神经网络进行翻译
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../34/" title="强化学习（DQN）教程" class="md-nav__link">
+      强化学习（DQN）教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../35/" title="Writing Distributed Applications with PyTorch" class="md-nav__link">
+      Writing Distributed Applications with PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../36/" title="空间转换网络 (Spatial Transformer Networks) 教程" class="md-nav__link">
+      空间转换网络 (Spatial Transformer Networks) 教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../37/" title="高级教程" class="md-nav__link">
+      高级教程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../38/" title="用 PyTorch 做 神经转换 (Neural Transfer)" class="md-nav__link">
+      用 PyTorch 做 神经转换 (Neural Transfer)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../39/" title="使用 numpy 和 scipy 创建扩展" class="md-nav__link">
+      使用 numpy 和 scipy 创建扩展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../40/" title="使用 ONNX 将模型从 PyTorch 迁移到 Caffe2 和 Mobile" class="md-nav__link">
+      使用 ONNX 将模型从 PyTorch 迁移到 Caffe2 和 Mobile
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../41/" title="为 pytorch 自定义 C 扩展" class="md-nav__link">
+      为 pytorch 自定义 C 扩展
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../42/" title="项目相关" class="md-nav__link">
+      项目相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../43/" title="项目贡献者" class="md-nav__link">
+      项目贡献者
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../44/" title="组织学习交流群" class="md-nav__link">
+      组织学习交流群
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      中文文档
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        中文文档
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../45/" title="介绍" class="md-nav__link">
+      介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../46/" title="自动求导机制" class="md-nav__link">
+      自动求导机制
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../47/" title="广播语义" class="md-nav__link">
+      广播语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../48/" title="CUDA 语义" class="md-nav__link">
+      CUDA 语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../49/" title="扩展 PyTorch" class="md-nav__link">
+      扩展 PyTorch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../50/" title="多进程的最佳实践" class="md-nav__link">
+      多进程的最佳实践
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../51/" title="序列化语义" class="md-nav__link">
+      序列化语义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../52/" title="Package 参考" class="md-nav__link">
+      Package 参考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../53/" title="torch" class="md-nav__link">
+      torch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../54/" title="torch.Tensor" class="md-nav__link">
+      torch.Tensor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../55/" title="torch.sparse" class="md-nav__link">
+      torch.sparse
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../56/" title="torch.Storage" class="md-nav__link">
+      torch.Storage
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../57/" title="torch.nn" class="md-nav__link">
+      torch.nn
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../58/" title="torch.optim" class="md-nav__link">
+      torch.optim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../59/" title="Automatic differentiation package - torch.autograd" class="md-nav__link">
+      Automatic differentiation package - torch.autograd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../60/" title="Probability distributions - torch.distributions" class="md-nav__link">
+      Probability distributions - torch.distributions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../61/" title="Multiprocessing package - torch.multiprocessing" class="md-nav__link">
+      Multiprocessing package - torch.multiprocessing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../62/" title="Distributed communication package - torch.distributed" class="md-nav__link">
+      Distributed communication package - torch.distributed
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../63/" title="Legacy package - torch.legacy" class="md-nav__link">
+      Legacy package - torch.legacy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        torch.cuda
+      </label>
+    
+    <a href="./" title="torch.cuda" class="md-nav__link md-nav__link--active">
+      torch.cuda
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#random-number-generator" title="Random Number Generator" class="md-nav__link">
+    Random Number Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-collectives" title="Communication collectives" class="md-nav__link">
+    Communication collectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streams-and-events" title="Streams and events" class="md-nav__link">
+    Streams and events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" title="Memory management" class="md-nav__link">
+    Memory management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia-tools-extension-nvtx" title="NVIDIA Tools Extension (NVTX)" class="md-nav__link">
+    NVIDIA Tools Extension (NVTX)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../65/" title="torch.utils.ffi" class="md-nav__link">
+      torch.utils.ffi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../66/" title="torch.utils.data" class="md-nav__link">
+      torch.utils.data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../67/" title="torch.utils.model_zoo" class="md-nav__link">
+      torch.utils.model_zoo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../68/" title="torch.onnx" class="md-nav__link">
+      torch.onnx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../69/" title="torchvision 参考" class="md-nav__link">
+      torchvision 参考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../70/" title="torchvision" class="md-nav__link">
+      torchvision
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../71/" title="torchvision.datasets" class="md-nav__link">
+      torchvision.datasets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../72/" title="torchvision.models" class="md-nav__link">
+      torchvision.models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../73/" title="torchvision.transforms" class="md-nav__link">
+      torchvision.transforms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../74/" title="torchvision.utils" class="md-nav__link">
+      torchvision.utils
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../75/" title="项目相关" class="md-nav__link">
+      项目相关
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../76/" title="项目贡献者" class="md-nav__link">
+      项目贡献者
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../77/" title="组织学习交流群" class="md-nav__link">
+      组织学习交流群
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#random-number-generator" title="Random Number Generator" class="md-nav__link">
+    Random Number Generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-collectives" title="Communication collectives" class="md-nav__link">
+    Communication collectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streams-and-events" title="Streams and events" class="md-nav__link">
+    Streams and events
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management" title="Memory management" class="md-nav__link">
+    Memory management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia-tools-extension-nvtx" title="NVIDIA Tools Extension (NVTX)" class="md-nav__link">
+    NVIDIA Tools Extension (NVTX)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/apachecn/pytorch-doc-zh/edit/master/docs/64.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="torchcuda">torch.cuda</h1>
+<p>这个包增加了对 CUDA tensor (张量) 类型的支持,利用 GPUs 计算实现了与 CPU tensors 相同的类型.</p>
+<p>这个是 lazily initialized (懒加载,延迟加载), 所以你可以一直导入它,并且可以用 <a href="#torch.cuda.is_available" title="torch.cuda.is_available"><code>is_available()</code></a> 来判断 你的系统是否支持 CUDA.</p>
+<p><a href="notes/cuda.html#cuda-semantics">CUDA 语义</a> 有更多关于使用 CUDA 的细节.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.current_blas_handle()</code></pre>
+
+
+<p>返回指向当前 cuBLAS 句柄的 cublasHandle_t 指针</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.current_device()</code></pre>
+
+
+<p>返回当前选择的设备的索引.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.current_stream()</code></pre>
+
+
+<p>返回当前选择的 <a href="#torch.cuda.Stream" title="torch.cuda.Stream"><code>Stream</code></a> .</p>
+<pre class="codehilite"><code class="language-py">class torch.cuda.device(idx)</code></pre>
+
+
+<p>更改选定设备的上下文管理器.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>idx</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – 选择设备编号. 如果参数无效,则是无效操作.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.device_count()</code></pre>
+
+
+<p>返回可用的 GPU 数量.</p>
+<p><code>torch.cuda.``device_ctx_manager</code></p>
+<p>alias of <a href="#torch.cuda.device" title="torch.cuda.device"><code>device</code></a></p>
+<pre class="codehilite"><code class="language-py">class torch.cuda.device_of(obj)</code></pre>
+
+
+<p>将当前设备更改为给定对象的上下文管理器.</p>
+<p>可以使用张量和存储作为参数,如果给定的对象不是在 GPU 上分配的,这是一个无效操作.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>obj</strong> (<a href="tensors.html#torch.Tensor" title="torch.Tensor"><em>Tensor</em></a> <em>or</em> <em>Storage</em>) – 在选定设备上分配的对象.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.empty_cache()</code></pre>
+
+
+<p>释放当前由缓存持有的所有未占用缓存内存分配器,以便可以在其他GPU应用程序中使用并在 &lt;cite&gt;nvidia-smi&lt;/cite&gt; 中可见.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.get_device_capability(device)</code></pre>
+
+
+<p>获取设备的 CUDA 算力.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>device</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – 返回设备名, 参数无效时, 方法失效.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Returns:</td>
+<td>设备的主次要 CUDA 算力.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>Return type:</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a>(<a href="storage.html#torch.FloatStorage.int" title="torch.FloatStorage.int">int</a>, <a href="storage.html#torch.FloatStorage.int" title="torch.FloatStorage.int">int</a>)</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.get_device_name(device)</code></pre>
+
+
+<p>获取设备名.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>device</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – 返回设备名. 参数无效时,则是无效操作.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.is_available()</code></pre>
+
+
+<p>返回一个 bool 值表示 CUDA 目前是否可用.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.set_device(device)</code></pre>
+
+
+<p>设置当前设备.</p>
+<p>不鼓励使用这个函数 <a href="#torch.cuda.device" title="torch.cuda.device"><code>device</code></a> . 在大多数情况下,最好使用 <code>CUDA_VISIBLE_DEVICES</code> 环境变量.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>device</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – 选择设备. 参数无效时,则是无效操作.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.stream(*args, **kwds)</code></pre>
+
+
+<p>选择给定流的上下文管理器.</p>
+<p>在选定的流上, 所有的CUDA内核在其上下文内排队.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>stream</strong> (<a href="#torch.cuda.Stream" title="torch.cuda.Stream"><em>Stream</em></a>) – 选择流. 如果是 <code>None</code> , 管理器无效.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.synchronize()</code></pre>
+
+
+<p>等待当前设备上所有流中的所有内核完成.</p>
+<h2 id="random-number-generator">Random Number Generator</h2>
+<pre class="codehilite"><code class="language-py">torch.cuda.get_rng_state(device=-1)</code></pre>
+
+
+<p>将当前 GPU 的随机数生成器状态作为 ByteTensor 返回.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>device</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 设备的 RNG 状态. Default: -1 (i.e., 使用当前设备).</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Warning</p>
+<p>函数需要提前初始化 CUDA .</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.set_rng_state(new_state, device=-1)</code></pre>
+
+
+<p>设置当前 GPU 的随机数发生器状态.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>new_state</strong> (<a href="tensors.html#torch.ByteTensor" title="torch.ByteTensor"><em>torch.ByteTensor</em></a>) – 所需的状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.manual_seed(seed)</code></pre>
+
+
+<p>设置用于当前 GPU 生成随机数的种子. 如果 CUDA 不可用,调用这个函数是安全的;在这种情况下,它将被忽略.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>seed</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a> <em>or</em> <em>long</em>) – 所需的种子.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Warning</p>
+<p>如果您正在使用多 GPU 模型,则此功能不足以获得确定性. seef作用于所有 GPUs , 使用 <a href="#torch.cuda.manual_seed_all" title="torch.cuda.manual_seed_all"><code>manual_seed_all()</code></a> .</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.manual_seed_all(seed)</code></pre>
+
+
+<p>设置在所有 GPU 上生成随机数的种子. 如果 CUDA 不可用, 调用此函数是安全的; 这种情况下,会被忽略.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>seed</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a> <em>or</em> <em>long</em>) – 所需的种子.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.seed()</code></pre>
+
+
+<p>将用于生成随机数的种子设置为当前 GPU 的随机数. 如果 CUDA 不可用,则调用此函数是安全的. 在那种情况下,会被忽略.</p>
+<p>Warning</p>
+<p>如果您正在使用多 GPU 模型, 则此功能不足以获得确定性. seef作用于所有 GPUs , 使用 <a href="#torch.cuda.seed_all" title="torch.cuda.seed_all"><code>seed_all()</code></a>.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.seed_all()</code></pre>
+
+
+<p>在所有 GPU 上将用于生成随机数的种子设置为随机数. 如果 CUDA 不可用,则调用此函数是安全的. 在那种情况下,会被忽略.</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.initial_seed()</code></pre>
+
+
+<p>返回当前 GPU 的当前随机种子.</p>
+<p>Warning</p>
+<p>函数提前初始化 CUDA .</p>
+<h2 id="communication-collectives">Communication collectives</h2>
+<pre class="codehilite"><code class="language-py">torch.cuda.comm.broadcast(tensor, devices)</code></pre>
+
+
+<p>将张量广播给多个 GPU .</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>tensor</strong> (<a href="tensors.html#torch.Tensor" title="torch.Tensor"><em>Tensor</em></a>) – 需要广播的张量.</li>
+<li><strong>devices</strong> (<em>Iterable</em>) – 在一个可迭代设备中广播. 请注意, 它应该像 (src, dst1, dst2, …), 其中的第一个元素是来至其广播的源设备.</li>
+</ul>
+<p>|
+| --- | --- |
+| Returns: | 一个元组, 包含 <code>tensor</code> 副本,放置在与设备的索引相对应的 <code>设备</code> 上. |
+| --- | --- |</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.comm.reduce_add(inputs, destination=None)</code></pre>
+
+
+<p>从多个 GPU 中收集张量.</p>
+<p>所有的输入应该有匹配的 shapes (形状).</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>inputs</strong> (<em>Iterable__[</em><a href="tensors.html#torch.Tensor" title="torch.Tensor"><em>Tensor</em></a><em>]</em>) – 添加一个可迭代的张量.</li>
+<li><strong>destination</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 放置输出的设备 (默认: 当前设备).</li>
+</ul>
+<p>|
+| --- | --- |
+| Returns: | 包含所有输入的元素和的张量, 存放在 <code>destination(目标)</code> 设备. |
+| --- | --- |</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.comm.scatter(tensor, devices, chunk_sizes=None, dim=0, streams=None)</code></pre>
+
+
+<p>分散张量到多个 GPU.</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>tensor</strong> (<a href="tensors.html#torch.Tensor" title="torch.Tensor"><em>Tensor</em></a>) – 需要分散的张量.</li>
+<li><strong>devices</strong> (<em>Iterable__[</em><a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]</em>) – 整数的迭代,指定张量应分散在哪些设备之间.</li>
+<li><strong>chunk_sizes</strong> (<em>Iterable__[</em><a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>]__,</em> <em>optional</em>) – 要放在每个设备上的块的大小. 应该匹配 <code>设备</code> 长度和 <code>tensor.size(dim)</code> 的和. 如果未指定,张量将被划分成相等的块.</li>
+<li><strong>dim</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 分块张量沿着的维度</li>
+</ul>
+<p>|
+| --- | --- |
+| Returns: | 一个元组包含 <code>tensor</code> 块, 传递给 <code>devices</code> . |
+| --- | --- |</p>
+<pre class="codehilite"><code class="language-py">torch.cuda.comm.gather(tensors, dim=0, destination=None)</code></pre>
+
+
+<p>从多个 GPU 收集张量.</p>
+<p>张量尺寸在不同于 <code>dim</code> 的维度上都应该匹配.</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>tensors</strong> (<em>Iterable__[</em><a href="tensors.html#torch.Tensor" title="torch.Tensor"><em>Tensor</em></a><em>]</em>) – 张量集合的迭代器.</li>
+<li><strong>dim</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – 张量被连接的维度.</li>
+<li><strong>destination</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 输出设备 (-1 代表 CPU, 默认: 当前设备)</li>
+</ul>
+<p>|
+| --- | --- |
+| Returns: | 一个位于 <code>目标</code> 设备上的张量, 将 <code>tensors</code> 沿着 <code>dim</code> 连接起来的结果. |
+| --- | --- |</p>
+<h2 id="streams-and-events">Streams and events</h2>
+<pre class="codehilite"><code class="language-py">class torch.cuda.Stream</code></pre>
+
+
+<p>CUDA 流的包装.</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>device</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 分配流的设备.</li>
+<li><strong>priority</strong> (<a href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>,</em> <em>optional</em>) – 流的优先级. 较低的数字代表较高的优先级.</li>
+</ul>
+<p>|
+| --- | --- |</p>
+<pre class="codehilite"><code class="language-py">query()</code></pre>
+
+
+<p>检查事件是否已被记录.</p>
+<table>
+<thead>
+<tr>
+<th>Returns:</th>
+<th>一个 BOOL 值, 指示事件是否已被记录.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">record_event(event=None)</code></pre>
+
+
+<p>记录一个事件.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>event</strong> (<a href="#torch.cuda.Event" title="torch.cuda.Event"><em>Event</em></a><em>,</em> <em>optional</em>) – 要记录的事件.如果没有给出,将分配一个新的.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Returns:</td>
+<td>记录的事件.</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">synchronize()</code></pre>
+
+
+<p>等待流中的所有内核完成.</p>
+<pre class="codehilite"><code class="language-py">wait_event(event)</code></pre>
+
+
+<p>将所有未来的工作提交到流等待事件.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>event</strong> (<a href="#torch.cuda.Event" title="torch.cuda.Event"><em>Event</em></a>) – 等待的事件.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">wait_stream(stream)</code></pre>
+
+
+<p>与另一个流同步.</p>
+<p>提交到此流的所有未来工作将等待直到所有核心在调用完成时提交给给定的流.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>stream</strong> (<a href="#torch.cuda.Stream" title="torch.cuda.Stream"><em>Stream</em></a>) – 同步流.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">class torch.cuda.Event(enable_timing=False, blocking=False, interprocess=False, _handle=None)</code></pre>
+
+
+<p>CUDA 事件包装器.</p>
+<p>| Parameters: | </p>
+<ul>
+<li><strong>enable_timing</strong> (<a href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – 指示事件是否应测量时间 (默认: <code>False</code>)</li>
+<li><strong>blocking</strong> (<a href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – 如果 <code>True</code>, <a href="#torch.cuda.Event.wait" title="torch.cuda.Event.wait"><code>wait()</code></a> 将阻塞 (默认: <code>False</code> )</li>
+<li><strong>interprocess</strong> (<a href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – 如果 <code>True</code>, 事件可以在进程之间共享 (默认: <code>False</code>)</li>
+</ul>
+<p>|
+| --- | --- |</p>
+<pre class="codehilite"><code class="language-py">elapsed_time(end_event)</code></pre>
+
+
+<p>返回记录事件之前所经过的时间.</p>
+<pre class="codehilite"><code class="language-py">ipc_handle()</code></pre>
+
+
+<p>返回此事件的 IPC 句柄.</p>
+<pre class="codehilite"><code class="language-py">query()</code></pre>
+
+
+<p>检查事件是否已记录.</p>
+<table>
+<thead>
+<tr>
+<th>Returns:</th>
+<th>一个 BOOL 值, 指示事件是否已被记录.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">record(stream=None)</code></pre>
+
+
+<p>记录给定流中的事件.</p>
+<pre class="codehilite"><code class="language-py">synchronize()</code></pre>
+
+
+<p>与事件同步.</p>
+<pre class="codehilite"><code class="language-py">wait(stream=None)</code></pre>
+
+
+<p>使给定流等待事件发生.</p>
+<h2 id="memory-management">Memory management</h2>
+<pre class="codehilite"><code class="language-py">torch.cuda.empty_cache()</code></pre>
+
+
+<p>释放当前由缓存持有的所有未占用缓存内存分配器,以便可以在其他GPU应用程序中使用并在 &lt;cite&gt;nvidia-smi&lt;/cite&gt; 中可见.</p>
+<h2 id="nvidia-tools-extension-nvtx">NVIDIA Tools Extension (NVTX)</h2>
+<pre class="codehilite"><code class="language-py">torch.cuda.nvtx.mark(msg)</code></pre>
+
+
+<p>描述在某个时刻发生的瞬间事件.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>msg</strong> (<a href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – 事件(用 ASCII 编码表示).</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.nvtx.range_push(msg)</code></pre>
+
+
+<p>设置一个固定范围的堆栈,返回的堆栈范围深度从0开始.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters:</th>
+<th><strong>msg</strong> (<a href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – 范围(用 ASCII 编码设置)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-py">torch.cuda.nvtx.range_pop()</code></pre>
+
+
+<p>弹出一个固定范围的堆栈,返回的堆栈范围深度从0结束.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+
+              <hr/>
+              <div align="center">
+                  <p><a href="http://www.apachecn.org/" target="_blank"><font face="KaiTi" size="6" color="red">我们一直在努力</font></a><p>
+                  <p><a href="https://github.com/apachecn/pytorch-doc-zh/" target="_blank">apachecn/pytorch-doc-zh</a></p>
+                  <p><iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=watch&count=true&v=2" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <iframe align="middle" src="https://ghbtns.com/github-btn.html?user=apachecn&repo=pytorch-doc-zh&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="25px"></iframe>
+                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bcee938030cc9e1552deb3bd9617bbbf62d3ec1647e4b60d9cd6b6e8f78ddc03"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="ML | ApacheCN" title="ML | ApacheCN"></a></p>
+                  <div style="text-align:center;margin:0 0 10.5px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:728px;height:90px"
+                             data-ad-client="ca-pub-3565452474788507"
+                             data-ad-slot="2543897000"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script></div>
+              </div>
+
+              <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+              <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+              <div id="gitalk-container" class="container-fluid"></div>
+              <script type="text/javascript">
+                  var gitalk = new Gitalk({
+                  clientID: 'f27b87eb424ba43df978',
+                  clientSecret: '9b3482a495c5257a1d269d8108b9bfd71f048c3c',
+                  repo: 'pytorch-doc-zh',
+                  owner: 'apachecn',
+                  admin: ['jiangzhonglian'],
+                  id: md5(location.pathname),
+                  distractionFreeMode: false
+                  })
+                  gitalk.render('gitalk-container')
+              </script>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../63/" title="Legacy package - torch.legacy" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                Legacy package - torch.legacy
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../65/" title="torch.utils.ffi" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                torch.utils.ffi
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
